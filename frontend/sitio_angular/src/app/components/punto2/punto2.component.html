@@ -1,0 +1,83 @@
+<!-- PRESENTACION -->
+<section>
+    <h2 class="text-center m-0 p-0 pt-4 pb-2">JUEGO: A CONTAR!</h2>
+    <hr />
+
+    <div>
+        <h4 class="text-center m-0 p-0 my-4">*** INSTRUCCIONES ***</h4>
+
+        <p>
+            Este es un juego para que los ni&ntilde;os/as se diviertan contando <span class="fw-bold">vocales,
+                consonantes, letras y silabas.</span><br />
+            Al hacer click en "NUEVO JUEGO", comenzara el juego. Este estara formado por una pregunta, 4 opciones
+            posibles y constara de 10 niveles. El jugador debera estar atento a lo que diga la pregunta y elegir una
+            de las opciones. Tambien habra un contador con los aciertos y errores que tenga a lo largo del juego.
+            Diviertanse!!!
+        </p>
+    </div>
+
+    <div class="text-center my-4">
+        <button class="btn btn-success" (click)="comenzarJuego()">NUEVO JUEGO <i class="fa-solid fa-play"></i></button>
+    </div>
+</section>
+
+<!-- JUEGO -->
+<section class="m-0 p-0 mb-4">
+    <div *ngIf="!jugando" class="text-center">
+        <img src="/assets/images/inicio_juego.png" width="100%" alt="Pantalla Inicial">
+    </div>
+
+    <div *ngIf="jugando">
+        <div class="text-center mb-2 py-2 bg-warning border border-black fs-4">
+            ¿Cuantas <span class="fw-bold">{{tipo_a_contar}}</span> hay en la palabra: <span
+                class="fw-bold">{{palabra.getValor()}}</span>?
+        </div>
+
+        <div class="row row-cols-sm-2">
+            <div *ngFor="let opcion of opciones_juego" class="p-0 m-0">
+                <div class="col text-center">
+                    <button class="btn mx-3 my-2 p-0" (click)="verificarOpcion(opcion.getValor())"><img
+                            src="{{opcion.getDireccion()}}" class="c_opcion" alt="Opcion | N°{{opcion.getValor()}}"
+                            data-bs-toggle="modal" data-bs-target="#idEstadistica"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row row-cols-sm-2 row-cols-1 text-center text-white fw-bold fs-4 mx-1">
+            <div class="col bg_verde py-2 border border-black">
+                Aciertos: {{aciertos}}
+            </div>
+
+            <div class="col bg-danger py-2 border border-black">
+                Errores: {{errores}}
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Estadisticas -->
+    <div class="modal fade" id="idEstadistica" tabindex="-1" aria-labelledby="labelByJuego" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header {{color_mensaje}} text-white">
+                    <h1 class="modal-title fs-5">{{mensaje}}</h1>
+
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="text_verde">
+                        <i class="fa-sharp fa-solid fa-circle-check"></i> ACIERTOS: {{aciertos}}
+                    </div>
+                    
+                    <div class="text-danger">
+                        <i class="fa-sharp fa-solid fa-circle-xmark"></i> ERRORES: {{errores}}
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

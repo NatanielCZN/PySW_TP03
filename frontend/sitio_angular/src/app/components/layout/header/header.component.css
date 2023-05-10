@@ -1,0 +1,31 @@
+nav {
+    padding: 0;
+}
+
+a.nav-link {
+    padding: 20px 0;
+}
+
+/**
+    Modificaciones del navbar-toggler cuando la pantalla es menor al tamaño md
+*/
+@media only screen and (max-width: 992px) {
+    nav div button.navbar-toggler {
+        margin: 13px 0;
+    }
+}
+
+/**
+    Modificacion del hover de una pestaña del navbar
+*/
+ul li a:hover {
+    color: blueviolet;    
+}
+
+/**
+    Modificacion para la pestaña activa del navbar
+*/
+.activa {
+    border-bottom: 3px solid;
+    border-color: blueviolet;
+}

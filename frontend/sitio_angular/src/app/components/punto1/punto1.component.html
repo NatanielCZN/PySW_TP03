@@ -1,0 +1,112 @@
+<h2 class="text-center m-0 p-0 pt-4 pb-2">PRODUCTOS</h2>
+<hr />
+
+<!-- CARRITO -->
+<section>
+    <!-- Boton Modal Carrito -->
+    <div class="text-end mt-4 me-sm-3 me-1">
+        <button class="btn btn-success px-4" data-bs-toggle="modal" data-bs-target="#idListaCarrito">VER <i
+                class="fa-solid fa-cart-shopping"></i></button>
+    </div>
+
+    <!-- Modal Carrito -->
+    <div class="modal fade" id="idListaCarrito" tabindex="-1" aria-labelledby="labelByProducto" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h1 class="modal-title fs-5">CARRITO <i class="fa-solid fa-cart-shopping"></i></h1>
+
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <ul class="list-group list-group-flush">
+                        <!-- Lista del Carrito -->
+                        <li class="list-group-item" *ngFor="let producto of carrito">
+                            <div class="row row-cols-3">
+                                <div class="col text-center">
+                                    <img src="{{producto.getImagen()}}" width="60" alt="{{producto.getImagen()}}">
+                                </div>
+
+                                <div class="col">
+                                    {{producto.getNombre()}}
+                                </div>
+
+                                <div class="col text-end">
+                                    ARS$ {{producto.getPrecio()}}
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Total -->
+                        <li class="list-group-item list-group-item-secondary">
+                            <div class="row row-cols-3 fw-bold">
+                                <div class="col text-center my-auto">
+                                    TOTAL
+                                </div>
+
+                                <div class="col"></div>
+
+                                <div class="col text-end">
+                                    ARS$ {{precio_total}}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section>
+    <!-- Exposicion de Productos -->
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 m-0 p-0 pb-4">
+        <div class="col" *ngFor="let producto of productos">
+            <div class="card bg-light">
+                <div class="card-body bg-primary text-white">
+                    <h4 class="list-group-item">{{producto.getNombre()}}</h4>
+                </div>
+
+                <img src="{{producto.getImagen()}}" class="card-img-top" alt="{{producto.getImagen()}}">
+
+                <div class="card-body">
+                    <h3 class="card-title">${{producto.getPrecio()}}</h3>
+
+                    <p class="card-text">{{producto.getDescripcion()}}</p>
+
+                    <!-- Boton Modal Notificacion -->
+                    <button class="btn btn-success" (click)="agregarProducto(producto)" data-bs-toggle="modal"
+                        data-bs-target="#idNotificacion">A&Ntilde;ADIR AL <i
+                            class="fa-solid fa-cart-shopping"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Notificacion -->
+    <div class="modal fade" id="idNotificacion" tabindex="-1" aria-labelledby="labelByProducto" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary text-white">
+                    <h1 class="modal-title fs-5">Notificacion</h1>
+
+                    <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    {{mensaje}}
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

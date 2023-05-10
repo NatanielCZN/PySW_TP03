@@ -1,0 +1,6 @@
+/**
+    Modificaciones a un estilo de boton
+*/
+.btn-redondeado {
+    border-radius: 100%;
+}

@@ -1,0 +1,20 @@
+/**
+    Modificacion de la posicion del footer
+    -------------------------------
+*/
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column; /* Direccion */
+    min-height: 100%;
+}
+
+footer {
+    margin-top: auto;
+}
+/**
+    -------------------------------
+*/

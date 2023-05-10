@@ -1,0 +1,47 @@
+<h2 class="text-center m-0 p-0 pt-4 pb-2">VENTA DE TICKETS</h2>
+<hr />
+
+<button class="btn btn-primary mb-4" (click)="realizarCompra()">COMPRAR</button>
+
+<div class="table-responsive">
+    <table class="table table-striped text-center">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">#ID</th>
+
+                <th scope="col">DNI</th>
+
+                <th scope="col">Espectador</th>
+
+                <th scope="col">Fecha</th>
+
+                <th scope="col">Precio</th>
+
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody class="table-group-divider">
+            <tr *ngFor="let ticket of tickets">
+                <th scope="row">{{ticket.getId()}}</th>
+
+                <td>{{ticket.getDni()}}</td>
+
+                <td>{{ticket.getTipoEspectador()}}</td>
+
+                <td>{{ticket.getFechaCobro() | date:'longDate'}}</td>
+
+                <td>ARS$ {{ticket.getPrecioCobrado()}}</td>
+
+                <td>
+                    <div class="mb-2">
+                        <button class="btn btn-warning" (click)="modificarCompra(ticket)">Modificar</button>            
+                    </div>
+
+                    <div class="mt-2">
+                        <button class="btn btn-danger" (click)="eliminarCompra(ticket)">Eliminar</button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

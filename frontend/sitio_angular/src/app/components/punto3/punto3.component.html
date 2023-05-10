@@ -1,0 +1,42 @@
+<h2 class="text-center m-0 p-0 pt-4 pb-2">FORMULARIO DE COMPRA</h2>
+<hr />
+
+<!-- FORMULARIO -->
+<form>
+    <div class="mb-3">
+        <label for="idDni" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="idDni" name="dni" [(ngModel)]="ticket.dni">
+    </div>
+
+    <div class="mb-3">
+        <label for="idPrecioReal" class="form-label">Precio</label>
+        <input type="text" class="form-control" id="idPrecioReal" name="precioreal" [(ngModel)]="ticket.precioReal"
+            (ngModelChange)="calcularDescuento()">
+    </div>
+
+    <div class="mb-3">
+        <label for="idEspectador" class="form-label">Tipo Espectador</label>
+
+        <select class="form-select" id="idEspectador" name="tipoespectador" [(ngModel)]="ticket.tipoEspectador"
+            (ngModelChange)="calcularDescuento()">
+            <option value="e">Extranjero</option>
+
+            <option value="l" selected>Local</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label *ngIf="comprobarDescuento()" for="idCalculado" class="form-label">Precio Final:
+            ARS$ {{ticket.getPrecioCobrado()}}</label>
+    </div>
+
+    <div class="mb-3 text-center">
+        <button *ngIf="accion == 'new'" type="submit" class="btn btn-primary" (click)="guardarTicket()">Comprar</button>
+
+        <div *ngIf="accion == 'update'">
+            <button type="submit" class="btn btn-primary mx-1" (click)="actualizarTicket()">Modificar</button>
+
+            <button class="btn btn-secondary mx-1" (click)="volverALista()">Volver</button>
+        </div>
+    </div>
+</form>

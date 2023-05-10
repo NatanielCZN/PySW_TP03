@@ -1,0 +1,14 @@
+/**
+    Modificacion al tamaño de las imagenes de las opciones
+*/
+.c_opcion {
+    width: 100%;
+}
+
+.bg_verde {
+    background-color: green;
+}
+
+.text_verde {
+    color: green;
+}

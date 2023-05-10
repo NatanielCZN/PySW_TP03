@@ -1,0 +1,12 @@
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+/**
+    Reduccion del padding a 0 en las clase "col"
+*/
+@media only screen and (max-width: 576px) {
+    div .col {
+        padding: 0;
+    }
+}
